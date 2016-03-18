@@ -21,7 +21,7 @@ var Chart = React.createClass({
 	componentDidMount: function(){
 		var self = this;
 
-		GoogleChartLoader.init(this.props.chartPackages, this.props.chartVersion).then(function(){
+		GoogleChartLoader.init(this.props.chartPackages, this.props.chartVersion, this.props.locale).then(function(){
 			self.drawChart();
 		});
 	},
@@ -52,7 +52,8 @@ var Chart = React.createClass({
 			chartActions : null,
 			data: null,
 			onSelect: null,
-			legend_toggle: false
+			legend_toggle: false,
+			locale: 'nl'
 		};
 	},
 

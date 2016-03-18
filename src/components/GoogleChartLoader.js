@@ -12,7 +12,7 @@ var GoogleChartLoader = function(){
 
 	var self = this;
 
-	this.init = function(packages, version) {
+	this.init = function(packages, version, locale) {
 		// Charts can only be loaded once because of the way google implemented this
 		// Remember to load all packages you need at the first call
 		if (this.is_loading) {
@@ -20,7 +20,7 @@ var GoogleChartLoader = function(){
 		}
 		this.is_loading = true
 		script("https://www.gstatic.com/charts/loader.js", function() {
-			google.charts.load(version || 'current', {packages: packages || ['corechart']});
+			google.charts.load(version || 'current', {packages: packages || ['corechart'], 'language': locale});
 			google.charts.setOnLoadCallback(function() {
 				self.is_loaded = true;
   				self.google_promise.resolve();
@@ -32,4 +32,3 @@ var GoogleChartLoader = function(){
 };
 
 module.exports = new GoogleChartLoader();
-
